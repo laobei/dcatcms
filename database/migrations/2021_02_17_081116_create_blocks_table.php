@@ -15,7 +15,7 @@ class CreateBlocksTable extends Migration
     public function up()
     {
         Schema::create('blocks', function (Blueprint $table) {
-            $table->increments();
+            $table->increments('id');
             $table->string('name')->unique()->comment('区块名称');
             $table->string('title')->comment('区块标题');
             $table->string('description')->nullable()->comment('区块描述');

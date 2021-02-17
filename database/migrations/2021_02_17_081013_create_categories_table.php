@@ -30,7 +30,7 @@ class CreateCategoriesTable extends Migration
             $table->string('banner')->nullable()->comment('栏目banner图');
             $table->string('icon')->nullable()->comment('栏目ICON');
             $table->tinyInteger('is_show')->default(1)->comment('显示到栏目: 0-不显示，１－显示');
-            $table->tinyInteger('is_show')->default(1)->comment('状态: ０－禁用，　１－启用');
+            $table->tinyInteger('status')->default(1)->comment('状态: ０－禁用，　１－启用');
             $table->tinyInteger('nofollow')->default(0)->comment('搜索引擎追踪: 0-否 / 1-是');
             $table->tinyInteger('module_type')->default(0)->comment('栏目模式: 0-频道/1-列表/2-单页/3-外部链接');
             $table->tinyInteger('next_nav')->default(0)->comment('是否显示下一栏目内容');
