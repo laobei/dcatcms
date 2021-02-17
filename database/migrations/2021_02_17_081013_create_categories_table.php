@@ -35,6 +35,10 @@ class CreateCategoriesTable extends Migration
             $table->tinyInteger('module_type')->default(0)->comment('栏目模式: 0-频道/1-列表/2-单页/3-外部链接');
             $table->tinyInteger('next_nav')->default(0)->comment('是否显示下一栏目内容');
             $table->integer('sort')->default(100)->comment('排序');
+            $table->string('template_index')->default('dcatcms.news-index')->comment('频道页模板');
+            $table->string('template_list')->default('dcatcms.news-list')->comment('列表页模板');
+            $table->string('template_detail')->default('dcatcms.news-detail')->comment('详情页模板');
+            $table->string('template_page')->default('dcatcms.page')->comment('单页模板');
             $table->timestamps();
         });
         DB::statement("ALTER TABLE `categories` comment'栏目表'"); // 表注释
