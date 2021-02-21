@@ -55,7 +55,7 @@ class BannerController extends AdminController
 
     public function detail($id)
     {
-        $show = new Show(BannerModel::findOrFail($id));
+        $show = new Show($id, BannerModel::findOrFail($id));
 
         $show->field('id', __('ID'));
         $show->field('title', __('标题'));
