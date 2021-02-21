@@ -17,7 +17,7 @@ class BannerController extends AdminController
      *
      * @var string
      */
-    protected $title = 'Banners';
+    protected $title = '幻灯片';
 
     /**
      * Make a grid table
