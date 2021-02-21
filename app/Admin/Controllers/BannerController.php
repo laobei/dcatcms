@@ -31,24 +31,15 @@ class BannerController extends AdminController
         $grid->column('id', __('ID'));
         $grid->column('title', __('标题'));
         $grid->column('description', __('描述'));
-        $grid->column('pic_url', __('图片地址'));
-        $grid->column('title_color', __('标题颜色'));
-        $grid->column('description_color', __('描述颜色'));
-        $grid->column('link_url', __('链接地址'));
-        $grid->column('position', __('显示位置'));
-        $grid->column('status', __('状态'))->display(function ($status) {
-            return $status ? '启用' : '禁用';
+        $grid->column('pic_url', __('图片'))->image(null, 60);
+        $grid->column('link_url', __('链接地址'))->display(function ($link_url) {
+            return '<a href=' . $link_url . '>' . $link_url . '</a>';
         });
-//        $grid->columns([
-//            'id' => __('ID'),
-//            'title' => __('标题'),
-//            'description' => __('描述'),
-//            'pic_url' => __('图片地址'),
-//            'title_color' => __('标题颜色'),
-//            'description_color' => __('描述颜色'),
-//            'link_url' => __('链接地址'),
-//            'position' => __('显示位置'),
-//        ]);
+        $grid->column('position', __('显示位置'));
+        $grid->status('状态')->using([
+            1 => '启用',
+            0 => '禁用'
+        ]);
 
         return $grid;
     }
@@ -65,24 +56,9 @@ class BannerController extends AdminController
         $show->field('description_color', __('描述颜色'));
         $show->field('link_url', __('链接地址'));
         $show->field('position', __('显示位置'));
-        $show->field('status', __('状态'))->as(function ($status) {
-            return $status ? '启用' : '禁用';
-        });
+        $show->status('状态')->using([ '1' => '启用', '0' => '禁用' ]);
         $show->field('created_at', __('创建时间'));
         $show->field('updated_at', __('更新时间'));
-//        $show->fields([
-//            'id' => __('ID'),
-//            'title' => __('标题'),
-//            'description' => __('描述'),
-//            'pic_url' => __('图片地址'),
-//            'title_color' => __('标题颜色'),
-//            'description_color' => __('描述颜色'),
-//            'link_url' => __('链接地址'),
-//            'position' => __('显示位置'),
-//
-//            'created_at' => __('创建时间'),
-//            'updated_at' => __('更新时间')
-//        ]);
 
         return $show;
     }
