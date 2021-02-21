@@ -43,7 +43,7 @@ class AdminTablesSeeder extends Seeder
                 'name'        => 'Auth management',
                 'slug'        => 'auth-management',
                 'http_method' => '',
-                'http_path'   => '*',
+                'http_path'   => '',
                 'parent_id'   => 0,
                 'order'       => 1,
                 'created_at'  => $createdAt,
