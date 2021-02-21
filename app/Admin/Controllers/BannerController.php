@@ -66,7 +66,7 @@ class BannerController extends AdminController
         $show->field('link_url', __('链接地址'));
         $show->field('position', __('显示位置'));
         $show->field('status', __('状态'))->as(function ($status) {
-            return $status ? '正常' : '禁用';
+            return $status ? '启用' : '禁用';
         });
         $show->field('created_at', __('创建时间'));
         $show->field('updated_at', __('更新时间'));
