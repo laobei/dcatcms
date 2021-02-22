@@ -15,5 +15,6 @@ Route::group([
     $router->get('/', 'HomeController@index');
 
     $router->resource('auth/banners', 'BannerController');
+    $router->resource('auth/categories', 'CategorieController');
 
 });

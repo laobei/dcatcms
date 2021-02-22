@@ -3,10 +3,11 @@
 namespace App\Admin\Repositories;
 
 use Dcat\Admin\Repositories\EloquentRepository;
+use App\Models\Categorie as CategorieModel;
 
 class Categorie extends EloquentRepository
 {
-    protected $eloquentClass = Categorie::class;
+    protected $eloquentClass = CategorieModel::class;
 
     /**
      * 设置表格查询的字段，默认查询所有字段

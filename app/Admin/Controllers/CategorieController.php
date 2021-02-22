@@ -7,26 +7,27 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Show;
-use App\Models\Categorie as CategorieModel;
 use Illuminate\Http\Request;
 
 class CategorieController extends AdminController
 {
-    public function grid()
+    protected $title = '栏目';
+
+    protected function grid()
     {
         $grid = new Grid(new Categorie());
 
         return $grid;
     }
 
-    public function detail($id)
+    protected function detail($id)
     {
-        $show = new Show($id, CategorieModel::findOrFail($id));
+        $show = new Show($id, new Categorie());
 
         return $show;
     }
 
-    public function form()
+    protected function form()
     {
         $form = new Form(new Categorie());
 
