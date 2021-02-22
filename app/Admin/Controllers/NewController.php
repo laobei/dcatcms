@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Repositories\News;
+use Dcat\Admin\Admin;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
@@ -16,7 +17,7 @@ class NewController extends AdminController
 
     protected function grid()
     {
-        $grid = new Grid(new News());
+        $grid = new Grid(new News([ 'admin' ]));
 
         $grid->column('id', 'ID')->sortable();
         $grid->column('title', '标题');
@@ -28,7 +29,7 @@ class NewController extends AdminController
         $grid->column('content', '内容');
         $grid->column('target', '打开方式');
         $grid->column('thumb', '缩略图')->image(null, 100, 100);
-        $grid->column('author', '作者');
+        $grid->column('admin.name', '作者');
         $grid->column('is_top', '推荐')->switch();
         $grid->column('status', '状态')->switch();
 
@@ -37,7 +38,7 @@ class NewController extends AdminController
 
     protected function detail($id)
     {
-        $show = new Show($id, NewsModel::findOrFail($id));
+        $show = new Show($id, new News([ 'admin' ]));
 
         $show->field('title', '标题');
         $show->field('file_name', '文件名');
@@ -48,9 +49,9 @@ class NewController extends AdminController
         $show->field('content', '内容');
         $show->field('target', '打开方式');
         $show->field('thumb', '缩略图')->image();
-        $show->field('author', '作者');
-        $show->field('is_top', '推荐');
-        $show->field('status', '状态');
+        $show->field('admin.name', '作者');
+        $show->field('is_top', '推荐')->using([ 0 => '否', 1 => '是' ]);
+        $show->field('status', '状态')->using([ 1 => '启用', 0 => '禁用' ]);
         $show->field('created_at', '创建时间');
         $show->field('updated_at', '更新时间');
 
@@ -73,7 +74,7 @@ class NewController extends AdminController
             '_self' => '_self'
         ])->default('_blank')->required();
         $form->image('thumb', '缩略图')->autoUpload()->required();
-        $form->number('author', '作者')->default(1)->required();
+        $form->text('author', '作者ID')->required()->readOnly()->default(Admin::user()->id);
         $form->select('is_top', '推荐')->options([
             0 => '否',
             1 => '是'

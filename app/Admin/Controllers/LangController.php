@@ -44,12 +44,12 @@ class LangController extends AdminController
     {
         $form = new Form(new Lang());
 
-        $form->text('name', '名称');
-        $form->text('lang', '标识');
+        $form->text('name', '名称')->required();
+        $form->text('lang', '标识')->required();
         $form->select('status', '状态')->options([
             0 => '禁用',
             1 => '启用'
-        ])->default(0);
+        ])->default(0)->required();
 
         return $form;
     }

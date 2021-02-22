@@ -23,7 +23,7 @@ class CategorieController extends AdminController
         $grid->column('module', '模块');
         $grid->column('icon', '栏目ICON')->image(null, 30, 30);
         $grid->column('status', '状态')->switch();
-        $grid->column('sort', '排序');
+        $grid->column('sort', '排序')->sortable();
 
         return $grid;
     }
@@ -46,11 +46,11 @@ class CategorieController extends AdminController
         $show->field('link_url', '外部链接地址');
         $show->field('banner', '栏目轮播图')->image();
         $show->field('icon', '栏目ICON')->image();
-        $show->field('is_show', '显示到栏目');
-        $show->field('status', '状态');
-        $show->field('nofollow', '搜索引擎追踪');
-        $show->field('module_type', '栏目模式');
-        $show->field('next_nav', '是否显示下一栏目内容');
+        $show->field('is_show', '显示到栏目')->using([ 1 => '显示', 0 => '不显示' ]);
+        $show->field('status', '状态')->using([ 1 => '启用', 0 => '禁用' ]);
+        $show->field('nofollow', '搜索引擎追踪')->using([ 0 => '否', 1 => '是' ]);
+        $show->field('module_type', '栏目模式')->using([ 0 => '频道', 1 => '列表', 2 => '单页', 3 => '外部链接' ]);
+        $show->field('next_nav', '是否显示下一栏目内容')->using([ 0 => '否', 1 => '是' ]);
         $show->field('sort', '排序');
         $show->field('template_index', '频道页模板');
         $show->field('template_list', '列表页模板');

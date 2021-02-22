@@ -32,9 +32,7 @@ class BannerController extends AdminController
         $grid->column('title', __('标题'));
         $grid->column('description', __('描述'));
         $grid->column('pic_url', __('图片'))->image(null, 100, 100);
-        $grid->column('link_url', __('链接地址'))->display(function ($link_url) {
-            return '<a href=' . $link_url . '>' . $link_url . '</a>';
-        });
+        $grid->column('link_url', __('链接地址'))->link();
         $grid->column('position', __('显示位置'));
         $grid->column('status', '状态')->switch();
 
@@ -53,7 +51,7 @@ class BannerController extends AdminController
         $show->field('description_color', __('描述颜色'));
         $show->field('link_url', __('链接地址'));
         $show->field('position', __('显示位置'));
-        $show->field('status', '状态')->using([ '1' => '启用', '0' => '禁用' ]);
+        $show->field('status', '状态')->using([ 0 => '禁用', 1 => '启用' ]);
         $show->field('created_at', __('创建时间'));
         $show->field('updated_at', __('更新时间'));
 
