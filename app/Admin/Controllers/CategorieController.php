@@ -2,12 +2,12 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Repositories\Categorie;
+use App\Admin\Repositories\Category;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Show;
-use App\Models\Categorie as CategorieModel;
+use App\Models\Category as CategoryModel;
 use Illuminate\Http\Request;
 
 class CategorieController extends AdminController
@@ -16,7 +16,7 @@ class CategorieController extends AdminController
 
     protected function grid()
     {
-        $grid = new Grid(new Categorie());
+        $grid = new Grid(new Category());
 
         $grid->column('id', 'ID')->sortable();
         $grid->column('name', '名称');
@@ -30,7 +30,7 @@ class CategorieController extends AdminController
 
     protected function detail($id)
     {
-        $show = new Show($id, CategorieModel::findOrFail($id));
+        $show = new Show($id, CategoryModel::findOrFail($id));
 
         $show->field('id', 'ID');
         $show->field('pid', '上级栏目ID');
@@ -64,7 +64,7 @@ class CategorieController extends AdminController
 
     protected function form()
     {
-        $form = new Form(new Categorie());
+        $form = new Form(new Category());
 
         $form->number('pid', '上级栏目ID');
         $form->text('name', '名称');

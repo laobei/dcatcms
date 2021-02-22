@@ -17,5 +17,6 @@ return [
         'categories'    => '栏目',
         'blocks'        => '区块信息',
         'langs'         => '语言',
+        'news'          => '信息'
     ],
 ];

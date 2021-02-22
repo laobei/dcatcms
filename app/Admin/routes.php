@@ -18,5 +18,6 @@ Route::group([
     $router->resource('auth/categories', 'CategorieController');
     $router->resource('auth/blocks', 'BlockController');
     $router->resource('auth/langs', 'LangController');
+    $router->resource('auth/news', 'NewController');
 
 });

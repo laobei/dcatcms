@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class Categorie extends Model
+class Category extends Model
 {
     use HasFactory, HasDateTimeFormatter;
 

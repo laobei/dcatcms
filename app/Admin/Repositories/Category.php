@@ -3,9 +3,9 @@
 namespace App\Admin\Repositories;
 
 use Dcat\Admin\Repositories\EloquentRepository;
-use App\Models\Categorie as CategorieModel;
+use App\Models\Category as CategorieModel;
 
-class Categorie extends EloquentRepository
+class Category extends EloquentRepository
 {
     protected $eloquentClass = CategorieModel::class;
 }
