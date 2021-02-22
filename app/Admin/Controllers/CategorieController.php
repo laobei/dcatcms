@@ -18,7 +18,7 @@ class CategorieController extends AdminController
     {
         $grid = new Grid(new Categorie());
 
-        $grid->column('id', 'ID');
+        $grid->column('id', 'ID')->sortable();
         $grid->column('name', '名称');
         $grid->column('module', '模块');
         $grid->column('icon', '栏目ICON')->image(null, 30, 30);

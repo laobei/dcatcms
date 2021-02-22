@@ -16,5 +16,6 @@ return [
         'banners'       => '幻灯片',
         'categories'    => '栏目',
         'blocks'        => '区块信息',
+        'langs'         => '语言',
     ],
 ];

@@ -17,5 +17,6 @@ Route::group([
     $router->resource('auth/banners', 'BannerController');
     $router->resource('auth/categories', 'CategorieController');
     $router->resource('auth/blocks', 'BlockController');
+    $router->resource('auth/langs', 'LangController');
 
 });

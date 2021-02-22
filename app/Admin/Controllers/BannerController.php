@@ -28,7 +28,7 @@ class BannerController extends AdminController
     {
         $grid = new Grid(new Banner());
 
-        $grid->column('id', __('ID'));
+        $grid->column('id', __('ID'))->sortable();
         $grid->column('title', __('标题'));
         $grid->column('description', __('描述'));
         $grid->column('pic_url', __('图片'))->image(null, 100, 100);
