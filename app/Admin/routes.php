@@ -15,7 +15,7 @@ Route::group([
     $router->get('/', 'HomeController@index');
 
     $router->resource('auth/banners', 'BannerController');
-    $router->resource('auth/categories', 'CategorieController');
+    $router->resource('auth/categories', 'CategoryController');
     $router->resource('auth/blocks', 'BlockController');
     $router->resource('auth/langs', 'LangController');
     $router->resource('auth/news', 'NewController');

@@ -7,8 +7,9 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Show;
+use Illuminate\Validation\Rule;
 
-class CategorieController extends AdminController
+class CategoryController extends AdminController
 {
     protected $title = '栏目';
 
@@ -67,7 +68,12 @@ class CategorieController extends AdminController
         $form->number('pid', '上级栏目ID')->required();
         $form->text('name', '名称')->required();
         $form->text('module', '模块')->required();
-        $form->text('file_name', '文件名')->required();
+        $form->text('file_name', '文件名')->required()->rules(function (Form $form) {
+            // 如果不是编辑状态，则添加字段唯一验证
+            if ( ! $id = $form->model()->id ) {
+                return 'unique:categories,id';
+            }
+        });
         $form->text('lang', '语言')->default('cn')->required();
         $form->text('seo_title', 'SEO标题')->required();
         $form->text('keywords', '关键词')->required();
