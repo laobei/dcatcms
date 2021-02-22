@@ -21,13 +21,13 @@ class Banner extends EloquentRepository
             'title',
             'description',
             'pic_url',
-            'title_color',
-            'description_color',
+//            'title_color',
+//            'description_color',
             'link_url',
             'position',
             'status',
-            'created_at',
-            'updated_at'
+//            'created_at',
+//            'updated_at'
         ];
     }
 }
