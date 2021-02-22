@@ -15,5 +15,6 @@ return [
         'icons'         => '图标',
         'banners'       => '幻灯片',
         'categories'    => '栏目',
+        'blocks'        => '区块信息',
     ],
 ];

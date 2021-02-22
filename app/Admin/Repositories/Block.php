@@ -2,9 +2,10 @@
 
 namespace App\Admin\Repositories;
 
+use App\Models\Block as BlockModel;
 use Dcat\Admin\Repositories\EloquentRepository;
 
 class Block extends EloquentRepository
 {
-    protected $eloquentClass = Block::class;
+    protected $eloquentClass = BlockModel::class;
 }

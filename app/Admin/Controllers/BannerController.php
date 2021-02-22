@@ -36,10 +36,7 @@ class BannerController extends AdminController
             return '<a href=' . $link_url . '>' . $link_url . '</a>';
         });
         $grid->column('position', __('显示位置'));
-        $grid->column('status', '状态')->using([
-            1 => '启用',
-            0 => '禁用'
-        ]);
+        $grid->column('status', '状态')->switch();
 
         return $grid;
     }
@@ -79,9 +76,9 @@ class BannerController extends AdminController
         $form->color('description_color', __('描述颜色'))->default('#e5e5e5')->required();
         $form->url('link_url', __('链接地址'))->required();
         $form->text('position', __('显示位置'))->default('home')->required();
-        $form->select('status', __('状态'))->options([
-            0 => '禁用',
-            1 => '启用'
+        $form->select('status', '状态')->options([
+            1 => '启用',
+            0 => '禁用'
         ])->default(0)->required();
 
         return $form;

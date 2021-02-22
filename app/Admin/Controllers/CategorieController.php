@@ -22,7 +22,7 @@ class CategorieController extends AdminController
         $grid->column('name', '名称');
         $grid->column('module', '模块');
         $grid->column('icon', '栏目ICON')->image(null, 30, 30);
-        $grid->status('状态')->using([ 0 => '禁用', 1 => '启用' ]);
+        $grid->column('status', '状态')->switch();
         $grid->column('sort', '排序');
 
         return $grid;
@@ -83,12 +83,12 @@ class CategorieController extends AdminController
         $form->image('banner', '栏目轮播图')->autoUpload();
         $form->file('icon', '栏目ICON')->autoUpload();
         $form->select('is_show', '显示到栏目')->options([
-            0 => '不显示',
-            1 => '显示'
+            1 => '显示',
+            0 => '不显示'
         ])->default(1);
         $form->select('status', '状态')->options([
-            0 => '禁用',
-            1 => '启用'
+            1 => '启用',
+            0 => '禁用'
         ])->default(1);
         $form->select('nofollow', '搜索引擎追踪')->options([
             0 => '否',
