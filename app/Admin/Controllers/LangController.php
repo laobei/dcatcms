@@ -6,9 +6,7 @@ use App\Admin\Repositories\Lang;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
-use App\Models\Lang as LangModel;
 use Dcat\Admin\Show;
-use Illuminate\Http\Request;
 
 class LangController extends AdminController
 {
@@ -28,7 +26,7 @@ class LangController extends AdminController
 
     protected function detail($id)
     {
-        $show = new Show($id, LangModel::findOrFail($id));
+        $show = new Show($id, new Lang());
 
         $show->field('id', 'ID');
         $show->field('name', '名称');

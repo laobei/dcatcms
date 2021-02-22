@@ -2,14 +2,12 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Repositories\Banner;
 use App\Admin\Repositories\Block;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Show;
-use App\Models\Block as BlockModel;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 class BlockController extends AdminController
 {
@@ -32,7 +30,7 @@ class BlockController extends AdminController
 
     protected function detail($id)
     {
-        $show = new Show($id, BlockModel::findOrFail($id));
+        $show = new Show($id, new Banner());
 
         $show->field('id', 'ID');
         $show->field('name', '名称');

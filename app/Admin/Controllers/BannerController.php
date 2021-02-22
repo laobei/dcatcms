@@ -7,8 +7,6 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Show;
-use App\Models\Banner as BannerModel;
-use Illuminate\Http\Request;
 
 class BannerController extends AdminController
 {
@@ -41,7 +39,7 @@ class BannerController extends AdminController
 
     public function detail($id)
     {
-        $show = new Show($id, BannerModel::findOrFail($id));
+        $show = new Show($id, new Banner());
 
         $show->field('id', __('ID'));
         $show->field('title', __('标题'));

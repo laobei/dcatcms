@@ -8,8 +8,6 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Show;
-use App\Models\News as NewsModel;
-use Illuminate\Http\Request;
 
 class NewController extends AdminController
 {

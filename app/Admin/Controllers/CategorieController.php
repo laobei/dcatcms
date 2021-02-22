@@ -7,8 +7,6 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Show;
-use App\Models\Category as CategoryModel;
-use Illuminate\Http\Request;
 
 class CategorieController extends AdminController
 {
@@ -30,7 +28,7 @@ class CategorieController extends AdminController
 
     protected function detail($id)
     {
-        $show = new Show($id, CategoryModel::findOrFail($id));
+        $show = new Show($id, new Category());
 
         $show->field('id', 'ID');
         $show->field('pid', '上级栏目ID');
