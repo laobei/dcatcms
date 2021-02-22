@@ -9,4 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 class Lang extends Model
 {
     use HasFactory, HasDateTimeFormatter;
+
+    protected $fillable = [
+        'name',
+        'lang',
+        'status'
+    ];
 }

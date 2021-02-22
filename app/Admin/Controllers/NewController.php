@@ -27,7 +27,7 @@ class NewController extends AdminController
         $grid->column('description', '描述');
         $grid->column('content', '内容');
         $grid->column('target', '打开方式');
-        $grid->column('thumb', '缩略图');
+        $grid->column('thumb', '缩略图')->image(null, 100, 100);
         $grid->column('author', '作者');
         $grid->column('is_top', '推荐')->switch();
         $grid->column('status', '状态')->switch();
@@ -47,7 +47,7 @@ class NewController extends AdminController
         $show->field('description', '描述');
         $show->field('content', '内容');
         $show->field('target', '打开方式');
-        $show->field('thumb', '缩略图');
+        $show->field('thumb', '缩略图')->image();
         $show->field('author', '作者');
         $show->field('is_top', '推荐');
         $show->field('status', '状态');
@@ -72,8 +72,8 @@ class NewController extends AdminController
             '_blank' => '_blank',
             '_self' => '_self'
         ])->default('_blank')->required();
-        $form->image('thumb', '缩略图')->required();
-        $form->text('author', '作者')->required();
+        $form->image('thumb', '缩略图')->autoUpload()->required();
+        $form->number('author', '作者')->default(1)->required();
         $form->select('is_top', '推荐')->options([
             0 => '否',
             1 => '是'

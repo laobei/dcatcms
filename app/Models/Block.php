@@ -12,12 +12,17 @@ class Block extends Model
 {
     use HasFactory, HasDateTimeFormatter;
 
+    protected $fillable = [
+        'name',
+        'title',
+        'description',
+        'thumb',
+        'content',
+        'status'
+    ];
+
     public function getThumbAttribute($thumb)
     {
-        if (Str::contains($thumb, '//')) {
-            return $thumb;
-        }
-
-        return Storage::disk('public')->url($thumb);
+        return $this->getImage($thumb);
     }
 }

@@ -40,17 +40,6 @@ class Category extends Model
 
     public function getBannerAttribute($banner)
     {
-        if (Str::contains($banner, '//')) {
-            return $banner;
-        }
-        return Storage::disk('public')->url($banner);
-    }
-
-    public function getIconAttribute($icon)
-    {
-        if (Str::contains($icon, '//')) {
-            return $icon;
-        }
-        return Storage::disk('public')->url($icon);
+        return $this->getImage($banner);
     }
 }

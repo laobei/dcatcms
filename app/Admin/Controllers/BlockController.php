@@ -51,15 +51,15 @@ class BlockController extends AdminController
     {
         $form = new Form(new Block());
 
-        $form->text('name', '名称');
-        $form->text('title', '标题');
-        $form->text('description', '描述');
-        $form->image('thumb', '缩略图')->autoUpload();
-        $form->textarea('content', '内容');
+        $form->text('name', '名称')->required();
+        $form->text('title', '标题')->required();
+        $form->text('description', '描述')->required();
+        $form->image('thumb', '缩略图')->autoUpload()->required();
+        $form->textarea('content', '内容')->required();
         $form->select('status', '状态')->options([
             0 => '禁用',
             1 => '启用'
-        ])->default(0);
+        ])->default(0)->required();
 
         return $form;
     }
