@@ -5,6 +5,8 @@ namespace App\Models;
 use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Categorie extends Model
 {
@@ -35,4 +37,20 @@ class Categorie extends Model
         'template_detail',
         'template_page'
     ];
+
+    public function getBannerAttribute($banner)
+    {
+        if (Str::contains($banner, '//')) {
+            return $banner;
+        }
+        return Storage::disk('public')->url($banner);
+    }
+
+    public function getIconAttribute($icon)
+    {
+        if (Str::contains($icon, '//')) {
+            return $icon;
+        }
+        return Storage::disk('public')->url($icon);
+    }
 }

@@ -14,5 +14,6 @@ return [
         'scaffold'      => '代码生成器',
         'icons'         => '图标',
         'banners'       => '幻灯片',
+        'categories'    => '栏目',
     ],
 ];
