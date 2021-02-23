@@ -7,7 +7,6 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Show;
-use Illuminate\Validation\Rule;
 
 class CategoryController extends AdminController
 {
@@ -18,11 +17,14 @@ class CategoryController extends AdminController
         $grid = new Grid(new Category());
 
         $grid->column('id', 'ID')->sortable();
+        $grid->column('title', '标题');
         $grid->column('name', '名称');
         $grid->column('module', '模块');
         $grid->column('icon', '栏目ICON')->image(null, 30, 30);
         $grid->column('status', '状态')->switch();
         $grid->column('sort', '排序')->sortable();
+        $grid->column('id', 'ID')->sortable();
+        $grid->column('title', '标题')->tree();
 
         return $grid;
     }

@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use Dcat\Admin\Traits\HasDateTimeFormatter;
+use Dcat\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class Category extends Model
 {
-    use HasFactory, HasDateTimeFormatter;
+    use HasFactory, HasDateTimeFormatter, ModelTree;
 
     protected $fillable = [
         'pid',
@@ -42,4 +41,10 @@ class Category extends Model
     {
         return $this->getImage($banner);
     }
+
+    protected $parentColumn = 'pid';
+
+    protected $orderColumn = 'sort';
+
+    protected $titleColumn = 'title';
 }
