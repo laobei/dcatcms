@@ -68,12 +68,9 @@ class CategoryController extends AdminController
         $form->number('pid', '上级栏目ID')->required();
         $form->text('name', '名称')->required();
         $form->text('module', '模块')->required();
-        $form->text('file_name', '文件名')->required()->rules(function (Form $form) {
-            // 如果不是编辑状态，则添加字段唯一验证
-            if ( ! $id = $form->model()->id ) {
-                return 'unique:categories,id';
-            }
-        });
+        $form->text('file_name', '文件名')->required()->rules('unique:categories,file_name,{{id}}', [
+            'unique' => '文件名已存在。'
+        ]);
         $form->text('lang', '语言')->default('cn')->required();
         $form->text('seo_title', 'SEO标题')->required();
         $form->text('keywords', '关键词')->required();

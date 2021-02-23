@@ -19,7 +19,7 @@ class NewController extends AdminController
 
         $grid->column('id', 'ID')->sortable();
         $grid->column('title', '标题');
-        $grid->column('file_name', '标题');
+        $grid->column('file_name', '文件名');
         $grid->column('lang', '语言');
         $grid->column('seo_title', 'SEO标题');
         $grid->column('keywords', '关键词');
@@ -61,7 +61,9 @@ class NewController extends AdminController
         $form = new Form(new News());
 
         $form->text('title', '标题')->required();
-        $form->text('file_name', '文件名')->required();
+        $form->text('file_name', '文件名')->required()->rules('unique:news,file_name,{{id}}', [
+            'unique' => '该文件名已存在。'
+        ]);
         $form->text('lang', '语言')->required()->default('cn');
         $form->text('seo_title', 'SEO标题')->required();
         $form->text('keywords', '关键词')->required();

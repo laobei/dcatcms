@@ -49,7 +49,7 @@ class BlockController extends AdminController
     {
         $form = new Form(new Block());
 
-        $form->text('name', '名称')->required();
+        $form->text('name', '名称')->required()->rules('unique:blocks,name,{{id}}');
         $form->text('title', '标题')->required();
         $form->text('description', '描述')->required();
         $form->image('thumb', '缩略图')->autoUpload()->required();
