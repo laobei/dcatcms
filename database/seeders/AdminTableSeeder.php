@@ -23,7 +23,7 @@ class AdminTableSeeder extends Seeder
                 'name' => 'Banners',
                 'slug' => 'banners',
                 'http_method' => '',
-                'http_path'   => '/auth/extensions*',
+                'http_path'   => '/auth/banners*',
                 'order'       => 7,
                 'parent_id'   => 1,
                 'created_at'    => $createdAt,
