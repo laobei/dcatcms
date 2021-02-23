@@ -33,7 +33,7 @@ class CreateCategoriesTable extends Migration
             $table->tinyInteger('status')->default(1)->comment('状态: ０－禁用，　１－启用');
             $table->tinyInteger('nofollow')->default(0)->comment('搜索引擎追踪: 0-否 / 1-是');
             $table->tinyInteger('module_type')->default(0)->comment('栏目模式: 0-频道/1-列表/2-单页/3-外部链接');
-            $table->tinyInteger('next_nav')->default(0)->comment('是否显示下一栏目内容');
+            $table->tinyInteger('next_nav')->default(0)->comment('是否显示下一栏目内容：0-否/1-是');
             $table->integer('sort')->default(100)->comment('排序');
             $table->string('template_index')->default('dcatcms.news-index')->comment('频道页模板');
             $table->string('template_list')->default('dcatcms.news-list')->comment('列表页模板');

@@ -13,5 +13,13 @@ return [
         'extensions'    => '扩展',
         'scaffold'      => '代码生成器',
         'icons'         => '图标',
+<<<<<<< HEAD
+=======
+        'banners'       => '幻灯片',
+        'categories'    => '栏目',
+        'blocks'        => '区块信息',
+        'langs'         => '语言',
+        'news'          => '信息'
+>>>>>>> 46c9def5e66cfc14f679e97c1f635e596e80c09d
     ],
 ];
