@@ -6,62 +6,69 @@ use App\Admin\Repositories\Category;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
+use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Show;
 
 class CategoryController extends AdminController
 {
     protected $title = '栏目';
 
+    public function index(Content $content)
+    {
+        return $content->header($this->title)
+            ->description(trans('admin.list'))
+            ->body($this->grid());
+    }
+
     protected function grid()
     {
         $grid = new Grid(new Category());
 
         $grid->column('id', 'ID')->sortable();
-        $grid->column('title', '标题');
+        $grid->column('title', '标题')->tree();
         $grid->column('name', '名称');
         $grid->column('module', '模块');
         $grid->column('icon', '栏目ICON')->image(null, 30, 30);
         $grid->column('status', '状态')->switch();
-        $grid->column('sort', '排序')->sortable();
-        $grid->column('id', 'ID')->sortable();
-        $grid->column('title', '标题')->tree();
+
+
 
         return $grid;
     }
 
-    protected function detail($id)
-    {
-        $show = new Show($id, new Category());
-
-        $show->field('id', 'ID');
-        $show->field('pid', '上级栏目ID');
-        $show->field('name', '名称');
-        $show->field('module', '模块');
-        $show->field('file_name', '文件名');
-        $show->field('lang', '语言');
-        $show->field('seo_title', 'SEO标题');
-        $show->field('keywords', '关键词');
-        $show->field('description', '描述');
-        $show->field('content', '内容');
-        $show->field('target', '打开方式');
-        $show->field('link_url', '外部链接地址');
-        $show->field('banner', '栏目轮播图')->image();
-        $show->field('icon', '栏目ICON')->image();
-        $show->field('is_show', '显示到栏目')->using([ 1 => '显示', 0 => '不显示' ]);
-        $show->field('status', '状态')->using([ 1 => '启用', 0 => '禁用' ]);
-        $show->field('nofollow', '搜索引擎追踪')->using([ 0 => '否', 1 => '是' ]);
-        $show->field('module_type', '栏目模式')->using([ 0 => '频道', 1 => '列表', 2 => '单页', 3 => '外部链接' ]);
-        $show->field('next_nav', '是否显示下一栏目内容')->using([ 0 => '否', 1 => '是' ]);
-        $show->field('sort', '排序');
-        $show->field('template_index', '频道页模板');
-        $show->field('template_list', '列表页模板');
-        $show->field('template_detail', '详情页模板');
-        $show->field('template_page', '单页模板');
-        $show->field('created_at', '创建时间');
-        $show->field('updated_at', '更新时间');
-
-        return $show;
-    }
+//    protected function detail($id)
+//    {
+//        $show = new Show($id, new Category());
+//
+//        $show->field('id', 'ID');
+//        $show->field('pid', '上级栏目ID');
+//        $show->field('name', '名称');
+//        $show->field('module', '模块');
+//        $show->field('file_name', '文件名');
+//        $show->field('lang', '语言');
+//        $show->field('seo_title', 'SEO标题');
+//        $show->field('keywords', '关键词');
+//        $show->field('description', '描述');
+//        $show->field('content', '内容');
+//        $show->field('target', '打开方式');
+//        $show->field('link_url', '外部链接地址');
+//        $show->field('banner', '栏目轮播图')->image();
+//        $show->field('icon', '栏目ICON')->image();
+//        $show->field('is_show', '显示到栏目')->using([ 1 => '显示', 0 => '不显示' ]);
+//        $show->field('status', '状态')->using([ 1 => '启用', 0 => '禁用' ]);
+//        $show->field('nofollow', '搜索引擎追踪')->using([ 0 => '否', 1 => '是' ]);
+//        $show->field('module_type', '栏目模式')->using([ 0 => '频道', 1 => '列表', 2 => '单页', 3 => '外部链接' ]);
+//        $show->field('next_nav', '是否显示下一栏目内容')->using([ 0 => '否', 1 => '是' ]);
+//        $show->field('sort', '排序');
+//        $show->field('template_index', '频道页模板');
+//        $show->field('template_list', '列表页模板');
+//        $show->field('template_detail', '详情页模板');
+//        $show->field('template_page', '单页模板');
+//        $show->field('created_at', '创建时间');
+//        $show->field('updated_at', '更新时间');
+//
+//        return $show;
+//    }
 
     protected function form()
     {
