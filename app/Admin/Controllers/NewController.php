@@ -18,15 +18,8 @@ class NewController extends AdminController
         $grid = new Grid(new News([ 'admin' ]));
 
         $grid->column('id', 'ID')->sortable();
-        $grid->column('title', '标题');
-        $grid->column('file_name', '文件名');
-        $grid->column('lang', '语言');
-        $grid->column('seo_title', 'SEO标题');
-        $grid->column('keywords', '关键词');
-        $grid->column('description', '描述');
-        $grid->column('content', '内容');
-        $grid->column('target', '打开方式');
         $grid->column('thumb', '缩略图')->image(null, 100, 100);
+        $grid->column('title', '标题');
         $grid->column('admin.name', '作者');
         $grid->column('is_top', '推荐')->switch();
         $grid->column('status', '状态')->switch();
