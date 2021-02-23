@@ -40,7 +40,7 @@ class LangController extends AdminController
 
     protected function form()
     {
-        $form = new Form(new Lang());
+        $form = new Form(Lang::class);
 
         $form->text('name', '名称')->required();
         $form->text('lang', '标识')->required();

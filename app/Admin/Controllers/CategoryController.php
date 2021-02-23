@@ -63,7 +63,7 @@ class CategoryController extends AdminController
 
     protected function form()
     {
-        $form = new Form(new Category());
+        $form = new Form(Category::class);
 
         $form->number('pid', '上级栏目ID')->required();
         $form->text('name', '名称')->required();

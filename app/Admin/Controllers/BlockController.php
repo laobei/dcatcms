@@ -47,7 +47,7 @@ class BlockController extends AdminController
 
     protected function form()
     {
-        $form = new Form(new Block());
+        $form = new Form(Block::class);
 
         $form->text('name', '名称')->required()->rules('unique:blocks,name,{{id}}');
         $form->text('title', '标题')->required();

@@ -58,8 +58,9 @@ class NewController extends AdminController
 
     protected function form()
     {
-        $form = new Form(new News());
+        $form = new Form(News::class);
 
+        $form->number('author', '作者ID')->default(Admin::user()->id)->required();
         $form->text('title', '标题')->required();
         $form->text('file_name', '文件名')->required()->rules('unique:news,file_name,{{id}}', [
             'unique' => '该文件名已存在。'
@@ -74,7 +75,6 @@ class NewController extends AdminController
             '_self' => '_self'
         ])->default('_blank')->required();
         $form->image('thumb', '缩略图')->autoUpload()->required();
-        $form->text('author', '作者ID')->required()->readOnly()->default(Admin::user()->id);
         $form->select('is_top', '推荐')->options([
             0 => '否',
             1 => '是'

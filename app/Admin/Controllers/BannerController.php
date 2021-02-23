@@ -63,7 +63,7 @@ class BannerController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Banner());
+        $form = new Form(Banner::class);
 
         $form->text('title', __('标题'))->required();
         $form->text('description', __('描述'))->required();
